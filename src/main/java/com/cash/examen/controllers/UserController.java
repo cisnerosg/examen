@@ -1,6 +1,5 @@
 package com.cash.examen.controllers;
 
-import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
-import com.cash.examen.models.User;
+import com.cash.examen.dto.UserDto;
+import com.cash.examen.exceptions.UserException;
 import com.cash.examen.services.UserService;
 
 @RestController
-@RequestMapping("users/")
+@RequestMapping("users")
 public class UserController {
 	
 	private final UserService userService;
@@ -27,20 +28,31 @@ public class UserController {
 	public UserController(UserService userService) {
 		this.userService = userService;
 	}
-	
-	@GetMapping(value = "{id}")
-    public ResponseEntity<User> getUser(@PathVariable("id") Long id) {
-		User user = userService.findById(id);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+	 
+	@GetMapping(value = "/{id}")
+    public ResponseEntity<UserDto> getUser(@PathVariable("id") Long id) {
+		UserDto user;
+		try {
+			user = userService.findById(id);
+	        return new ResponseEntity<>(user, HttpStatus.OK);
+		} catch (UserException e) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+		}
 	}
 	
+	//Creación de nuevo usuario, no incluye Loans
 	@PostMapping()
 	@ResponseBody
-	public User createUser(@RequestBody User user) throws SQLException {
-		return userService.create(user);
+	public UserDto createUser(@RequestBody UserDto user)  {
+		try {
+			return userService.create(user);
+		} catch (UserException e) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+		}
 	} 
 	
-	@DeleteMapping(value = "{id}")
+	//Borrado en cascada de usuario
+	@DeleteMapping(value = "/{id}")
 	public void deleteUser(@PathVariable("id") Long id){
 		userService.delete(id);
 	}

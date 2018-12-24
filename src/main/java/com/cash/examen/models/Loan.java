@@ -19,8 +19,8 @@ public class Loan {
     @Column(nullable = false)
 	private BigDecimal total;
     
-    @Column(nullable = false)
-    private int user_id;
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
 
 	public Long getId() {
 		return id;
@@ -38,12 +38,12 @@ public class Loan {
 		this.total = total;
 	}
 
-	public int getUser_id() {
-		return user_id;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(Long user_id) {
+		this.userId = user_id;
 	}
     
 }
