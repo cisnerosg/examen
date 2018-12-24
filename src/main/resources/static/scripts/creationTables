@@ -1,0 +1,22 @@
+CREATE TABLE `cash`.`users` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(45) NOT NULL,
+  `first_name` VARCHAR(80) NOT NULL,
+  `last_name` VARCHAR(80) NOT NULL,
+  PRIMARY KEY (`id`));
+
+
+CREATE TABLE `cash`.`loans` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `total` DECIMAL(10,2) NOT NULL,
+  `user_id` INT(10) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  INDEX `loans_user_idx` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `loans_user`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `cash`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+

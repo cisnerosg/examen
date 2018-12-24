@@ -1,0 +1,18 @@
+
+INSERT INTO `cash`.`users` (`first_name`, `last_name`, `email`) VALUES ('Marcelo', 'Larrea', 'marcelo@gmail.com');
+
+INSERT INTO `cash`.`loans` (`total`, `user_id`)
+  SELECT '10', id FROM `cash`.`users` WHERE email = 'marcelo@gmail.com';
+
+INSERT INTO `cash`.`loans` (`total`, `user_id`)
+  SELECT '12', id FROM `cash`.`users` WHERE email = 'marcelo@gmail.com';
+
+INSERT INTO `cash`.`users` (`first_name`, `last_name`, `email`) VALUES ('Mirna', 'Rodriguez', 'mirna@gmail.com');
+
+INSERT INTO `cash`.`loans` (`total`, `user_id`)
+  SELECT '8', id FROM `cash`.`users` WHERE email = 'mirna@gmail.com';
+
+INSERT INTO `cash`.`loans` (`total`, `user_id`)
+  SELECT '11', id FROM `cash`.`users` WHERE email = 'mirna@gmail.com';
+  
+INSERT INTO `cash`.`users` (`first_name`, `last_name`, `email`) VALUES ('Jesica', 'Perez', 'mirna@gmail.com');
