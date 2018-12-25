@@ -16,9 +16,9 @@ Alternatively you can use the Spring Boot Maven plugin like so: mvn spring-boot:
 
 1- Init Connection (resources/application.properties)
 
-  -datasource url= jdbc:mysql://localhost:3306/cash
-  -datasource username= root
-  -datasource password= root
+  datasource url= jdbc:mysql://localhost:3306/cash
+  datasource username= root
+  datasource password= root
 
 2- Running Script CreationTables
   
