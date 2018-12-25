@@ -14,7 +14,7 @@ Alternatively you can use the Spring Boot Maven plugin like so: mvn spring-boot:
 
 * Running DB (mySQL)
 
-1- Init Conection (resources/application.properties)
+1- Init Connection (resources/application.properties)
 
   datasource url= jdbc:mysql://localhost:3306/cash
   datasource username= root
