@@ -33,4 +33,15 @@ Endpoint healthCheck: localhost:8080/healthCheck
 
 
 
+*Examples
+
+localhost:8080/users/2 (get user with id 2)
+
+localhost:8080/users/6(remove user with id 6)
+
+localhost:8080/loans/?size=5&page=0 (get all loans with paging params)
+
+localhost:8080/loans/?userId=5&page=0&size=5 (get loans with paging and user params)
+
+
 
