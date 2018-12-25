@@ -12,6 +12,9 @@ com.cash.examen.ExamenApplication.java class from your IDE.
 
 Alternatively you can use the Spring Boot Maven plugin like so: mvn spring-boot:run
 
+
+Endpoint healthCheck: localhost:8080/healthCheck
+
 * Running DB (mySQL)
 
 1- Init Connection (resources/application.properties)
@@ -27,5 +30,7 @@ Alternatively you can use the Spring Boot Maven plugin like so: mvn spring-boot:
 3- Running Script insertData
   
   path: resources/static/scripts/insertData
+
+
 
 
